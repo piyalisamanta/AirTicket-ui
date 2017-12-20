@@ -1,0 +1,129 @@
+<table>
+<tr>
+  <td>Destination From</td>
+  <td></td>
+  <td>To</td>
+</tr>
+<tr>
+  <td>
+    <select name="" id="">
+      <option value="">Select City</option>
+    </select>
+  </td>
+  <td></td>
+  <td>
+    <select name="" id="">
+      <option value="">Select City</option>
+    </select>
+  </td>
+  </tr>
+  <tr>
+      <td>Departure Date</td>
+      <td></td>
+      <td>Time</td>
+    </tr>
+    <tr>
+      <td>
+        <input type="date"/>
+      </td>
+      <td>
+        
+      </td>
+      <td>
+          <select name="" id="">
+            <option value="">7</option>
+          </select> 
+          <select name="" id="" >
+            <option value="">30</option>
+          </select>
+      </td>
+  </tr>
+  <tr>
+      <td>Passengers</td>
+      <td></td>
+      <td>Class</td>
+    </tr>
+    <tr>
+      <td>
+          <select name="" id="">
+            <option value="1">1</option>
+            <option value="2">2</option>
+          </select>
+      </td>
+      <td>
+        
+      </td>
+      <td>
+          <select name="" id="">
+            <option value="">Business</option>
+          </select>
+      </td>
+  </tr>
+
+  <tr>
+    <td></td>
+    <td><button (click)="searchFlights()">Search Flights</button></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td colspan="12">
+      <table border="1px">
+        <tr>
+          <td></td>
+          <td>Airlines</td>
+          <td>Departure Date</td>
+          <td>Departure Time</td>
+          <td>Arrival Time</td>
+          <td>No of Passengers</td>
+          <td>Price</td>
+          <td>Total Cost</td>
+        </tr>
+
+        <tr *ngFor="let flight of flights; let counter = index">
+            <td><input type="checkbox" name="toBeBooked" [(ngModel)]="flight.toBeBooked" /></td>
+            <td>{{flight.airlines}}</td>
+            <td>{{flight.deptDate}}</td>
+            <td>{{flight.deptTime}} hrs</td>
+            <td>{{flight.arrivalTime}}</td>
+            <td>{{flight.airlines}}</td>
+            <td>{{flight.cost}}</td>
+            <td>{{flight.price}}</td>
+          </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+      <td></td>
+      <td><button (click)="booking()">Book</button></td>
+      <td></td>
+  </tr>
+  <tr>
+      <td colspan="11">
+        <table border="1px">
+          <tr>
+            <td></td>
+            <td>Airlines</td>
+            <td>Departure Date</td>
+            <td>Departure Time</td>
+            <td>Arrival Time</td>
+            <td>No of Passengers</td>
+            <td>Total Cost</td>
+          </tr>
+          <tr *ngFor="let booking of bookings; let counter = index">
+              <td> <input type="checkbox" name="toBeCancelled" [(ngModel)]="booking.toBeCancelled" /> </td>
+              <td>{{booking.airlines}}</td>
+              <td>{{booking.departDate}}</td>
+              <td>{{booking.departTime}} hrs</td>
+              <td>{{booking.arrivalTime}} hrs</td>
+              <td>{{booking.passCount}}</td>
+              <td>{{booking.totalCost}}</td>
+            </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><button (click)="cancel()">Cancel Booking</button></td>
+        <td></td>
+    </tr>
+</table>

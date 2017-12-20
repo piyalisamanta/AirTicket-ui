@@ -1,0 +1,29 @@
+<div>
+  <h4>Create Account</h4>
+
+  <form (ngSubmit)="register()" #userForm="ngForm">
+      <span>Email-Id: </span>
+      <input type="text" [(ngModel)]="user.emailAddress"
+       required name="emailAddress" #emailAddress="ngModel"/>
+      <br>
+      <span>Password: </span>
+      <input type="password" [(ngModel)]="user.password" required name="password" #password="ngModel"/>
+      <br>
+      <span>Confirm Password: </span>
+      <input type="password" [(appMatch)]="user.password" 
+      [(ngModel)]="user.confirmPassword"  required name="confirmPassword" #confirmPassword="ngModel"/>
+
+      <div class="col-sm-4" *ngIf="confirmPassword.errors && (confirmPassword.dirty || confirmPassword.touched)" class="error">
+          <span [hidden]="!confirmPassword.errors.required" >
+                Confirm Password  is required
+          </span>
+          <span [hidden]="!confirmPassword.errors.appMatch || confirmPassword.errors.required" >
+            Confirm Password and Password must match
+          </span>
+        </div>
+        <br>
+        <input type="submit" value="Register"/>
+
+  </form>
+
+</div>
